@@ -3,6 +3,8 @@
         "fstream": "cpp",
         "xlocale": "cpp",
         "codecvt": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "format": "cpp",
+        "xstring": "cpp"
     }
 }

@@ -10,14 +10,13 @@ void readFile(string path, vector<string> &words);
 
 int main()
 {
-
-    printMessage();
     
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hStdout, FOREGROUND_GREEN);
     SetConsoleOutputCP(CP_UTF8);
     vector<string> words;
     readFile("words2.txt", words);
+    searchWords(words);
     cout << words.size() << endl;
 
     for (size_t i = 0; i < words.size(); i++)
