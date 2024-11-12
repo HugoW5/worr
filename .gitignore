@@ -26,6 +26,8 @@ words2.txt
 *.la
 *.a
 *.lib
+*.ilk
+*.pdb
 
 # Executables
 *.exe
