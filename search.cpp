@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "search.h"
-
+#include "functions.h"
 std::vector<std::string> searchWords(std::vector<std::string> &words, std::string query)
 {
     std::vector<std::string> results;

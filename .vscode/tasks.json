@@ -10,6 +10,7 @@
 				"/EHsc",
 				"main.cpp",
 				"search.cpp",
+				"responsiveOutput.cpp",
 				"/nologo",
 				"/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
 				"${file}"

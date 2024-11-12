@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include <Windows.h>
-#include "search.h"
+#include "functions.h"
 
 using namespace std;
 void readFile(string path, vector<string> &words);
@@ -12,6 +12,9 @@ int main()
 {
     // Get Standart output (Console Handle)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+    //Get console buffer for use in responsive output
+    CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+
     // Enable UTF-8 Encoding
     SetConsoleOutputCP(CP_UTF8);
     vector<string> words;
@@ -32,6 +35,8 @@ int main()
         {
             SetConsoleTextAttribute(hStdout, FOREGROUND_RED);
         }
+        //Update the consoleInfo
+        GetConsoleScreenBufferInfo(hStdout, &consoleInfo);
         cout << "Hittade " << results.size() << " resultat" << endl;
         // Print results
         // Foreground color cyan
@@ -40,6 +45,7 @@ int main()
         {
             cout << results[i] << endl;
         }
+        printResponsive(consoleInfo, words);
     }
     return 0;
 }
