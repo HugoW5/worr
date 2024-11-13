@@ -12,7 +12,7 @@ int main()
 {
     // Get Standart output (Console Handle)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-    //Get console buffer for use in responsive output
+    // Get console buffer for use in responsive output
     CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
 
     // Enable UTF-8 Encoding
@@ -23,7 +23,7 @@ int main()
     while (true)
     {
         SetConsoleTextAttribute(hStdout, 0x006);
-        cout << "Asterisk (*) representerar okänt tecken" << endl;
+        cout << "Asterisk (*) representerar okänt tecken\n";
         cout << "Ord: ";
         cin >> userInput;
         vector<string> results = searchWords(words, userInput);
@@ -35,17 +35,24 @@ int main()
         {
             SetConsoleTextAttribute(hStdout, FOREGROUND_RED);
         }
-        //Update the consoleInfo
+        // Update the consoleInfo
         GetConsoleScreenBufferInfo(hStdout, &consoleInfo);
-        cout << "Hittade " << results.size() << " resultat" << endl;
+        cout << "Hittade " << results.size() << " resultat\n";
         // Print results
         // Foreground color cyan
         SetConsoleTextAttribute(hStdout, 0x0003);
-        for (size_t i = 0; i < results.size(); i++)
+
+        if (results.size() > 50)
         {
-            cout << results[i] << endl;
+            printResponsive(consoleInfo, results);
         }
-        printResponsive(consoleInfo, words);
+        else
+        {
+            for (size_t i = 0; i < results.size(); i++)
+            {
+                cout << results[i] << "\n";
+            }
+        }
     }
     return 0;
 }
